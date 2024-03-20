@@ -28,7 +28,7 @@ const Form = () => {
                 stdin: values.stdin,
                 sourceCode: values.code
             }))
-            axios.post("http://localhost:3000/api/v1/assignment/striver/submit",
+            axios.post("https://striver-assignment.onrender.com/api/v1/assignment/striver/submit",
              JSON.stringify({
                 username: values.username,
                 codeLanguage: values.options,
