@@ -17,6 +17,7 @@ const express_1 = require("express");
 const Inputs_1 = __importDefault(require("../zod/Inputs"));
 const base_64_1 = __importDefault(require("base-64"));
 const utf8_1 = __importDefault(require("utf8"));
+const options_1 = require("../stdout/options");
 const router = (0, express_1.Router)();
 const prisma = new client_1.PrismaClient();
 var StatusCode;
@@ -79,25 +80,26 @@ router.post('/submit', (req, res) => __awaiter(void 0, void 0, void 0, function*
                 break;
         }
         console.log(codeId);
-        // const response = await judgeO(codeId,code,stdin)
-        // const output = base64.decode(utf8.decode(response))
-        // let limitedCode = "";
-        // for (let i = 0; i < body.sourceCode.length && limitedCode.length < 100; i++) {
-        //     let char = body.sourceCode[i];
-        //     limitedCode += char;
-        // }
-        // await prisma.assignment.create({
-        //     data: {
-        //         username: body.username,
-        //         codeLanguage: body.codeLanguage,
-        //         stdin: body.stdin,
-        //         sourceCode: limitedCode,
-        //         stdout: output
-        //     }
-        // })
-        // return res.status(StatusCode.CREATED).json({
-        //     message: "user added the code successfully",
-        // })
+        const response = yield (0, options_1.judgeO)(codeId, code, stdin);
+        const output = base_64_1.default.decode(utf8_1.default.decode(response));
+        console.log("output: ", output);
+        let limitedCode = "";
+        for (let i = 0; i < body.sourceCode.length && limitedCode.length < 100; i++) {
+            let char = body.sourceCode[i];
+            limitedCode += char;
+        }
+        yield prisma.assignment.create({
+            data: {
+                username: body.username,
+                codeLanguage: body.codeLanguage,
+                stdin: body.stdin,
+                sourceCode: limitedCode,
+                stdout: output
+            }
+        });
+        return res.status(StatusCode.CREATED).json({
+            message: "user added the code successfully",
+        });
     }
     catch (error) {
         return res.json({ errorMessage: error });
