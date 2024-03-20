@@ -22,12 +22,7 @@ const Form = () => {
         // validationSchema: formSchema,
         onSubmit: values => {
 
-            console.log(JSON.stringify({
-                username: values.username,
-                codeLanguage: values.options,
-                stdin: values.stdin,
-                sourceCode: values.code
-            }))
+          
             axios.post("https://striver-assignment.onrender.com/api/v1/assignment/striver/submit",
              JSON.stringify({
                 username: values.username,
