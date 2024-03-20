@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install && tsc -b",
+    "build": "npm install && npx prisma generate && tsc -b",
     "dev": "node dist/index.js"
   },
   "keywords": [],
