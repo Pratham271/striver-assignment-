@@ -75,7 +75,7 @@ router.post('/submit', async(req,res)=> {
         console.log(codeId)
         const response = await judgeO(codeId,code,stdin)
         const output = base64.decode(utf8.decode(response))
-        console.log("output: ",output)
+
         let limitedCode = "";
         for (let i = 0; i < body.sourceCode.length && limitedCode.length < 100; i++) {
             let char = body.sourceCode[i];

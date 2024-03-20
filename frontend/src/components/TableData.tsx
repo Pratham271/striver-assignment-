@@ -12,7 +12,7 @@ const TableData = () => {
     const setLoading = useSetRecoilState(loadingState)
     useEffect(()=> {
         
-        axios.get("http://localhost:3000/api/v1/assignment/striver/display")
+        axios.get("https://striver-assignment.onrender.com/api/v1/assignment/striver/display")
         .then((response)=> {
             setLoading(true)
             const limitedResponse = response.data.allData.map((item: { createdAt: Date  }) => {
