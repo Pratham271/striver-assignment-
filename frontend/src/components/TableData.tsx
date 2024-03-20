@@ -18,7 +18,7 @@ const TableData = () => {
             const limitedResponse = response.data.allData.map((item: { createdAt: Date  }) => {
                 const timestamp = new Date(item.createdAt);
                 const formattedTimestamp = timestamp.toUTCString(); // or toLocaleString() for local time
-                console.log(formattedTimestamp);
+                
                 return { ...item, createdAt: formattedTimestamp };
             });
             
