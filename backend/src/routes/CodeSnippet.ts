@@ -73,27 +73,27 @@ router.post('/submit', async(req,res)=> {
                 break;
         }
         console.log(codeId)
-        // const response = await judgeO(codeId,code,stdin)
-        // const output = base64.decode(utf8.decode(response))
-        
-        // let limitedCode = "";
-        // for (let i = 0; i < body.sourceCode.length && limitedCode.length < 100; i++) {
-        //     let char = body.sourceCode[i];
-        //     limitedCode += char;
-        // }
-        // await prisma.assignment.create({
-        //     data: {
-        //         username: body.username,
-        //         codeLanguage: body.codeLanguage,
-        //         stdin: body.stdin,
-        //         sourceCode: limitedCode,
-        //         stdout: output
-        //     }
-        // })
-        // return res.status(StatusCode.CREATED).json({
-        //     message: "user added the code successfully",
+        const response = await judgeO(codeId,code,stdin)
+        const output = base64.decode(utf8.decode(response))
+        console.log("output: ",output)
+        let limitedCode = "";
+        for (let i = 0; i < body.sourceCode.length && limitedCode.length < 100; i++) {
+            let char = body.sourceCode[i];
+            limitedCode += char;
+        }
+        await prisma.assignment.create({
+            data: {
+                username: body.username,
+                codeLanguage: body.codeLanguage,
+                stdin: body.stdin,
+                sourceCode: limitedCode,
+                stdout: output
+            }
+        })
+        return res.status(StatusCode.CREATED).json({
+            message: "user added the code successfully",
             
-        // })
+        })
     } catch (error) {
         return res.json({errorMessage: error})
     }
