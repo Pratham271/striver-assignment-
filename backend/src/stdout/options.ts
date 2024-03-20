@@ -34,13 +34,3 @@ export const judgeO = async(id:number, code:string,input:string) => {
     }
 }
 
-// const options = {
-//     method: 'GET',
-//     url: 'https://judge0-ce.p.rapidapi.com/languages/52',
-//     headers: {
-//       'X-RapidAPI-Key': '16debb2bccmshdb6b12a196f6591p1348cbjsn572115f71826',
-//       'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-//     }
-//   };
-
-//   export default options
