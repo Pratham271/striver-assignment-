@@ -54,9 +54,9 @@ const Form = () => {
     <>
         <form className="max-w-sm mx-auto pt-4 md:max-w-md lg:max-w-xl" onSubmit={formik.handleSubmit}>
             <Input label={formik.errors.username?formik.errors.username:"username"} placeholder={"John Doe"} onChange={formik.handleChange} id="username"/>
-            <Options label={formik.errors.options?formik.errors.options:"Code Language"} onChange={formik.handleChange} id="options" value={formik.values.options}/>
-            <Textarea label={formik.errors.code?formik.errors.code:"Code"} placeholder={"Write your code..."} onChange={formik.handleChange} id="code"/>
-            <Input label={formik.errors.stdin?formik.errors.stdin:"Sdtin"} placeholder={"Input Params"} onChange={formik.handleChange} id="stdin"/>
+            <Options label={formik.errors.options?formik.errors.options:"Code Language"} onChange={formik.handleChange} id="Code Language" value={formik.values.options}/>
+            <Textarea label={formik.errors.code?formik.errors.code:"Code"} placeholder={"Write your code..."} onChange={formik.handleChange} id="Code"/>
+            <Input label={formik.errors.stdin?formik.errors.stdin:"Sdtin"} placeholder={"Input Params"} onChange={formik.handleChange} id="Stdin"/>
             <Button label={"Submit"}/>
         </form>
     </>
