@@ -11,7 +11,7 @@ const Users = () => {
     <div className="p-4">
     Users Data
     </div>
-   {loading===true?<Skeleton/>:<TableData/>}
+   <TableData/>
 </div>
 
   )
