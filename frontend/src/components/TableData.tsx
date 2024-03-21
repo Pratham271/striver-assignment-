@@ -1,8 +1,8 @@
-import { useRecoilValue, useSetRecoilState } from "recoil"
+import { useRecoilValue } from "recoil"
 import { darkModeState } from "../store/atoms/atoms"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { loadingState } from "../store/atoms/atoms"
+
 
 
 const TableData = () => {
