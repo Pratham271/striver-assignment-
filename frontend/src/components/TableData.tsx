@@ -9,12 +9,12 @@ const TableData = () => {
     const tableHead = ["Id","Username","Language","Stdin","Code","Stdout","createdAt"]
     const darkMode = useRecoilValue(darkModeState)
     const [tableData,setTableData] = useState<any[]>([])
-    const setLoading = useSetRecoilState(loadingState)
+    
     useEffect(()=> {
         
         axios.get("https://striver-assignment.onrender.com/api/v1/assignment/striver/display")
         .then((response)=> {
-            setLoading(true)
+            
             const limitedResponse = response.data.allData.map((item: { createdAt: Date  }) => {
                 const timestamp = new Date(item.createdAt);
                 const formattedTimestamp = timestamp.toUTCString(); // or toLocaleString() for local time
@@ -23,7 +23,7 @@ const TableData = () => {
             });
             
             setTableData(limitedResponse);
-            setLoading(false);
+            
         })
     },[])
   return (
