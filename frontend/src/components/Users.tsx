@@ -1,10 +1,8 @@
-import { useRecoilValue } from "recoil"
-import { loadingState } from "../store/atoms/atoms"
-import Skeleton from "./Skeleton"
+
 import TableData from "./TableData"
 
 const Users = () => {
-    const loading = useRecoilValue(loadingState)
+    
   return (
     
 <div className="relative overflow-x-auto pt-4">
